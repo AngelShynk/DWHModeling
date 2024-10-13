@@ -1,0 +1,46 @@
+erDiagram
+    FactSales {
+        int sales_id
+        int product_id
+        int store_id
+        int time_id
+        float sales_amount
+        int quantity_sold
+    }
+
+    DimProduct {
+        int product_id
+        string product_name
+        string product_category
+        float price
+    }
+
+    DimStore {
+        int store_id
+        string store_name
+        string store_location
+    }
+
+    DimTime {
+        int time_id
+        date sales_date
+        string sales_month
+        string sales_year
+        string quarter
+    }
+
+    OLAPCube {
+        int product_id
+        int store_id
+        int time_id
+        float total_sales
+        int total_quantity_sold
+    }
+
+    OLAPCube ||--o{ DimProduct : "product_id"
+    OLAPCube ||--o{ DimStore : "store_id"
+    OLAPCube ||--o{ DimTime : "time_id"
+
+    FactSales ||--o{ DimProduct : "product_id"
+    FactSales ||--o{ DimStore : "store_id"
+    FactSales ||--o{ DimTime : "time_id"

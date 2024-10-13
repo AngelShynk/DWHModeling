@@ -1,0 +1,64 @@
+erDiagram
+    FactSales {
+        int sales_id
+        int product_id
+        int customer_id
+        int store_id
+        int time_id
+        float sales_amount
+        int quantity_sold
+    }
+
+    DimProduct {
+        int product_id
+        string product_name
+        int category_id
+        float price
+    }
+
+    DimCategory {
+        int category_id
+        string category_name
+        int department_id
+    }
+
+    DimDepartment {
+        int department_id
+        string department_name
+    }
+
+    DimCustomer {
+        int customer_id
+        string customer_name
+        int location_id
+        string customer_email
+    }
+
+    DimLocation {
+        int location_id
+        string city
+        string state
+        string country
+    }
+
+    DimStore {
+        int store_id
+        string store_name
+        string store_location
+    }
+
+    DimTime {
+        int time_id
+        date sales_date
+        string sales_month
+        string sales_year
+    }
+
+    FactSales ||--o{ DimProduct : "product_id"
+    FactSales ||--o{ DimCustomer : "customer_id"
+    FactSales ||--o{ DimStore : "store_id"
+    FactSales ||--o{ DimTime : "time_id"
+
+    DimProduct ||--o{ DimCategory : "category_id"
+    DimCategory ||--o{ DimDepartment : "department_id"
+    DimCustomer ||--o{ DimLocation : "location_id"
