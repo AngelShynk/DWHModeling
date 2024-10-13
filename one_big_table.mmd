@@ -1,0 +1,56 @@
+erDiagram
+    %% Main Big Table
+    OneBigTable {
+        int sales_id
+        int product_id
+        string product_name
+        string product_category
+        float price
+        int store_id
+        string store_name
+        string store_location
+        int customer_id
+        string customer_name
+        string customer_email
+        string customer_location
+        int time_id
+        date sales_date
+        string sales_month
+        string sales_year
+        float total_sales
+        int total_quantity_sold
+    }
+
+    %% Underlying tables
+    DimProduct {
+        int product_id
+        string product_name
+        string product_category
+        float price
+    }
+
+    DimStore {
+        int store_id
+        string store_name
+        string store_location
+    }
+
+    DimCustomer {
+        int customer_id
+        string customer_name
+        string customer_email
+        string customer_location
+    }
+
+    DimTime {
+        int time_id
+        date sales_date
+        string sales_month
+        string sales_year
+    }
+
+    %% Relationships to show the source of data
+    OneBigTable ||--o{ DimProduct : "product_id"
+    OneBigTable ||--o{ DimStore : "store_id"
+    OneBigTable ||--o{ DimCustomer : "customer_id"
+    OneBigTable ||--o{ DimTime : "time_id"
